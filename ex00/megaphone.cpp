@@ -16,6 +16,6 @@ int main(int argc, char *argv[])
         }
         std::cout << argv[idx_arg];
     }
-    std::cout << '\n';
+    std::cout << std::endl;
     return (EXIT_SUCCESS);
 }
