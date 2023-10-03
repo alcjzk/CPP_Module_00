@@ -40,15 +40,15 @@ void PhoneBook::display() const
         if (!this->contacts[i].is_valid())
             continue ;
         std::cout << '|' << 
-            PhoneBook::formatted(std::to_string(i)) << '|' <<
-            PhoneBook::formatted(this->contacts[i].first_name()) << '|' <<
-            PhoneBook::formatted(this->contacts[i].last_name()) << '|' <<
-            PhoneBook::formatted(this->contacts[i].nickname()) << '|' <<
+            PhoneBook::format_cell(std::to_string(i)) << '|' <<
+            PhoneBook::format_cell(this->contacts[i].first_name()) << '|' <<
+            PhoneBook::format_cell(this->contacts[i].last_name()) << '|' <<
+            PhoneBook::format_cell(this->contacts[i].nickname()) << '|' <<
             std::endl;
     }
 }
 
-std::string  PhoneBook::formatted(const std::string &str)
+std::string  PhoneBook::format_cell(const std::string &str)
 {
     size_t  input_length;
     int     padding_length;
