@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "PhoneBook.hpp"
 
 #define COLUMN_WIDTH 10
@@ -18,7 +19,7 @@ void PhoneBook::add_contact(const Contact &contact)
 
 void PhoneBook::display_contact(int index) const
 {
-    if (index > PHONEBOOK_MAX_CONTACTS || index < 0)
+    if (index >= PHONEBOOK_MAX_CONTACTS || index < 0)
     {
         std::cout << 
             "Contact index '" << index << "' out of bounds" << std::endl;
@@ -37,35 +38,39 @@ void PhoneBook::display() const
 {
     int contact_idx;
 
+    std::cout << "\n|";
+    std::cout << std::setw(11) << "Index|";
+    std::cout << std::setw(11) << "First name|";
+    std::cout << std::setw(11) << "Last name|";
+    std::cout << std::setw(11) << "Nickname|";
+    std::cout << std::endl;
+    std::cout << "---------------------------------------------" << std::endl;
     for (int i = 0; i < PHONEBOOK_MAX_CONTACTS; i++)
     {
         if (!this->contacts[i].is_valid())
             continue ;
-        std::cout << '|' << 
-            PhoneBook::format_cell(std::to_string(i)) << '|' <<
-            PhoneBook::format_cell(this->contacts[i].first_name()) << '|' <<
-            PhoneBook::format_cell(this->contacts[i].last_name()) << '|' <<
-            PhoneBook::format_cell(this->contacts[i].nickname()) << '|' <<
-            std::endl;
+        std::cout << std::setw(1) << '|';
+        std::cout << std::setw(COLUMN_WIDTH) << i;
+        std::cout << std::setw(1) << '|';
+        std::cout << std::setw(COLUMN_WIDTH) << PhoneBook::truncate(this->contacts[i].first_name());
+        std::cout << std::setw(1) << '|';
+        std::cout << std::setw(COLUMN_WIDTH) << PhoneBook::truncate(this->contacts[i].last_name());
+        std::cout << std::setw(1) << '|';
+        std::cout << std::setw(COLUMN_WIDTH) << PhoneBook::truncate(this->contacts[i].nickname());
+        std::cout << std::setw(1) << '|';
+        std::cout << std::endl;
     }
-    std::cout << "Enter index to display: ";
+    std::cout << "\nEnter index to display: ";
     std::cin >> contact_idx;
     this->display_contact(contact_idx);
 }
 
-std::string  PhoneBook::format_cell(const std::string &str)
+std::string PhoneBook::truncate(const std::string &str)
 {
-    size_t  input_length;
-    int     padding_length;
+    std::string output;
 
-    input_length = str.length();
-    padding_length = (int)COLUMN_WIDTH - input_length;
-    if (padding_length < 0)
-        padding_length = 0;
-    std::string output(10, ' ');
-    output.insert(padding_length, str, 0, COLUMN_WIDTH - padding_length);    
-    output.resize(10);
-    if (input_length > COLUMN_WIDTH)
+    output = str.substr(0, COLUMN_WIDTH);
+    if (str.length() > COLUMN_WIDTH)
         output.back() = '.';
     return (output);
 }

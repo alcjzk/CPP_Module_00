@@ -18,7 +18,7 @@ class PhoneBook {
         int                 next_free_idx;
 
         void                display_contact(int index) const;
-        static std::string  format_cell(const std::string &str);
+        static std::string  truncate(const std::string &str);
 };
 
 #endif
