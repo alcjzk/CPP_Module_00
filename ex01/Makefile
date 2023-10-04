@@ -11,6 +11,9 @@ SRCS	= main.cpp Contact.cpp PhoneBook.cpp
 
 all: $(NAME)
 
+run: all
+	./$(NAME)
+
 clean:
 	rm -rf $(OBJ_DIR)
 
