@@ -18,7 +18,7 @@ void PhoneBook::add_contact(const Contact &contact)
 
 void PhoneBook::display_contact(int index) const
 {
-    if (index > PHONEBOOK_MAX_CONTACTS)
+    if (index > PHONEBOOK_MAX_CONTACTS || index < 0)
     {
         std::cout << 
             "Contact index '" << index << "' out of bounds" << std::endl;
@@ -35,6 +35,8 @@ void PhoneBook::display_contact(int index) const
 
 void PhoneBook::display() const
 {
+    int contact_idx;
+
     for (int i = 0; i < PHONEBOOK_MAX_CONTACTS; i++)
     {
         if (!this->contacts[i].is_valid())
@@ -46,6 +48,9 @@ void PhoneBook::display() const
             PhoneBook::format_cell(this->contacts[i].nickname()) << '|' <<
             std::endl;
     }
+    std::cout << "Enter index to display: ";
+    std::cin >> contact_idx;
+    this->display_contact(contact_idx);
 }
 
 std::string  PhoneBook::format_cell(const std::string &str)
