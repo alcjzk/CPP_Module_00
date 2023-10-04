@@ -11,7 +11,7 @@ int main(void)
         while (true)
         {
             std::cout << "Enter command (ADD | SEARCH | EXIT): ";
-            std::cin >> input; // FIXME: Infinite loop on ctrl+d
+            std::getline(std::cin, input);
             if (input.compare("ADD") == 0)
             {
                 Contact contact;

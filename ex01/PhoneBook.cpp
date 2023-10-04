@@ -10,7 +10,7 @@ void PhoneBook::add_contact(const Contact &contact)
 {
     if (!contact.is_valid())
     {
-        std::cout << "Cannot save incomplete contact" << std::endl;
+        std::cout << "\nCannot save incomplete contact\n" << std::endl;
         return ;
     }
     this->contacts[this->next_free_idx] = contact;
@@ -22,13 +22,13 @@ void PhoneBook::display_contact(int index) const
     if (index >= PHONEBOOK_MAX_CONTACTS || index < 0)
     {
         std::cout << 
-            "Contact index '" << index << "' out of bounds" << std::endl;
+            "\nContact index '" << index << "' out of bounds\n" << std::endl;
         return ;
     }
     if (!this->contacts[index].is_valid())
     {
         std::cout <<
-            "No saved contact at index '" << index << "'" << std::endl;
+            "\nNo saved contact at index '" << index << "'\n" << std::endl;
         return ;
     }
     this->contacts[index].display();
@@ -62,6 +62,8 @@ void PhoneBook::display() const
     }
     std::cout << "\nEnter index to display: ";
     std::cin >> contact_idx;
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     this->display_contact(contact_idx);
 }
 

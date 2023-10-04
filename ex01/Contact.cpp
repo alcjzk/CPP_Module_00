@@ -5,31 +5,34 @@ Contact::Contact() {}
 
 void Contact::fill_prompt()
 {
-    std::cout << "Please fill contact info below\n";
+    std::cout << "\nPlease fill contact info below\n";
 
     std::cout << "First name: ";
-    std::cin >> this->_first_name;
+    std::getline(std::cin, this->_first_name);
 
     std::cout << "Last name: ";
-    std::cin >> this->_last_name;
+    std::getline(std::cin, this->_last_name);
 
     std::cout << "Nickname: ";
-    std::cin >> this->_nickname;
+    std::getline(std::cin, this->_nickname);
 
     std::cout << "Phone number: ";
-    std::cin >> this->_phone_number;
+    std::getline(std::cin, this->_phone_number);
 
     std::cout << "Darkest secret: ";
-    std::cin >> this->_darkest_secret;
+    std::getline(std::cin, this->_darkest_secret);
+    std::cout << std::endl;
 }
 
 void Contact::display() const
 {
+    std::cout << '\n';
     std::cout << "First name: "     << this->_first_name     << '\n';
     std::cout << "Last name: "      << this->_last_name      << '\n';
     std::cout << "Nickname: "       << this->_nickname       << '\n';
     std::cout << "Phone number: "   << this->_phone_number   << '\n';
     std::cout << "Darkest secret: " << this->_darkest_secret << '\n';
+    std::cout << '\n';
 }
 
 bool Contact::is_valid() const
