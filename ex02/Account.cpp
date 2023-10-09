@@ -1,4 +1,10 @@
+#include <iostream>
 #include "Account.hpp"
+
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
 
 int	Account::getNbAccounts( void )
 {
@@ -28,7 +34,20 @@ void	Account::displayAccountsInfos( void )
 
 Account::Account( int initial_deposit )
 {
-	// TODO: 
+	Account::_displayTimestamp();
+
+	this->_accountIndex = Account::_nbAccounts;
+	this->_amount = initial_deposit;
+	this->_nbDeposits = 1;
+	this->_nbWithdrawals = 0;
+
+	Account::_nbAccounts++;
+	Account::_totalAmount += initial_deposit;
+	Account::_totalNbDeposits++;
+	
+	std::cout << "index:" << this->_accountIndex;
+	std::cout << ";amount:" << initial_deposit;
+	std::cout << ";created" << std::endl;
 }
 
 Account::~Account( void )
@@ -60,7 +79,8 @@ void	Account::displayStatus( void ) const
 
 void	Account::_displayTimestamp( void )
 {
-	// TODO: 
+	// FIXME: Fake timestamp
+	std::cout << "[19920104_091532] ";
 }
 
 Account::Account( void )
