@@ -4,7 +4,10 @@
 
 #define COLUMN_WIDTH 10
 
-PhoneBook::PhoneBook() { }
+PhoneBook::PhoneBook()
+{
+    next_free_idx = 0;
+}
 
 void PhoneBook::add_contact(const Contact &contact)
 {
