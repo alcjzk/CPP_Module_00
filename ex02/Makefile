@@ -4,7 +4,7 @@ OBJ_DIR	= ./obj
 SRC_DIR = .
 
 CC 		= c++
-CFLAGS 	= -MP -MMD -I$(SRC_DIR) -std=c++98 -g
+CFLAGS 	= -MP -MMD -I$(SRC_DIR) -std=c++98 -g -Wall -Werror -Wextra -Wpedantic
 SHELL	= /bin/sh
 
 SRCS	= tests.cpp Account.cpp
