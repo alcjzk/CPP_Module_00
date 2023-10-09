@@ -4,7 +4,7 @@ OBJ_DIR	= ./obj
 SRC_DIR = .
 
 CC 		= c++
-CFLAGS 	= -MP -MMD -I$(SRC_DIR) -Wall -Wextra -Werror -Wpedantic -g -fsanitize=address
+CFLAGS 	= -MP -MMD -I$(SRC_DIR) -Wall -Wextra -Werror -Wpedantic -g -std=c++98
 SHELL	= /bin/sh
 
 SRCS	= main.cpp Contact.cpp PhoneBook.cpp
