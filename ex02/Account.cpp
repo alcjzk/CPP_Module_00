@@ -56,7 +56,10 @@ Account::Account( int initial_deposit )
 
 Account::~Account( void )
 {
-	// TODO: 
+	Account::_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex;
+	std::cout << ";amount:" << this->_amount;
+	std::cout << ";closed" << std::endl;
 }
 
 void	Account::makeDeposit( int deposit )
