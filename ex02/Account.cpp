@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 #include "Account.hpp"
 
 int Account::_nbAccounts = 0;
@@ -116,8 +117,13 @@ void	Account::displayStatus( void ) const
 
 void	Account::_displayTimestamp( void )
 {
-	// FIXME: Fake timestamp
-	std::cout << "[19920104_091532] ";
+	std::time_t	time = std::time(NULL);
+	std::tm 	*tm;
+	char		buf[512];
+
+	tm = std::localtime(&time);
+	(void)strftime(buf, 512, "[%Y%m%d_%H%M%S] ", tm);
+	std::cout << buf;
 }
 
 Account::Account( void )
